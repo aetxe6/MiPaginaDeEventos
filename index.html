@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos Modernos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.2rem;
+    }
+
+    .card-content h3 {
+      margin-bottom: 0.5rem;
+      color: #4f46e5;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .card-content span {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #111827;
+      color: #9ca3af;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Eventos Destacados</h1>
+    <p>Descubre los mejores eventos cerca de ti</p>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1518972559570-0f8c7f6d6b9f" alt="Concierto" />
+      <div class="card-content">
+        <h3>Concierto en Vivo</h3>
+        <p>Disfruta de una noche increíble con música en vivo y artistas invitados.</p>
+        <span>📅 20 de Julio · 📍 Madrid</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Conferencia" />
+      <div class="card-content">
+        <h3>Conferencia Tech</h3>
+        <p>Aprende sobre tecnología, programación y tendencias digitales.</p>
+        <span>📅 5 de Agosto · 📍 Barcelona</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf" alt="Festival" />
+      <div class="card-content">
+        <h3>Festival Cultural</h3>
+        <p>Gastronomía, arte y cultura en un solo lugar para toda la familia.</p>
+        <span>📅 12 de Septiembre · 📍 Valencia</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Eventos Modernos. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
