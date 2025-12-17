@@ -18,10 +18,24 @@
     }
 
     header {
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      background: url('image/Donostia.jpg') center / cover no-repeat;
       color: white;
-      padding: 2rem;
+      padding: 3rem 2rem;
       text-align: center;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    header h1,
+    header p {
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
