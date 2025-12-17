@@ -18,15 +18,60 @@
     }
 
     header {
-      background-image: url('image/Donostia.jpg');
+  background-image: url('image/Donostia.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center 40%; /*  ajuste con porcentaje */
+  background-position: center 40%;
   color: white;
   padding: 3rem 2rem;
   text-align: center;
   position: relative;
-    }
+}
+
+.user-menu {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.user-menu button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+  min-width: 160px;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown button:hover {
+  background: #f4f6f8;
+}
+
+.hidden {
+  display: none;
+}
 
     header::before {
       content: "";
@@ -109,9 +154,17 @@
 </head>
 <body>
   <header>
-    <h1>Donostia Events</h1>
-    <p>Descubre los mejores eventos en Donostia San Sebastian</p>
-  </header>
+    <h1>Eventos Destacados</h1>
+    <p>Descubre los mejores eventos cerca de ti</p>
+    <div class="user-menu">
+    <button id="userBtn">👤</button>
+    <div id="dropdown" class="dropdown hidden">
+      <button id="loginBtn">Iniciar sesión</button>
+      <button id="registerBtn">Registrarse</button>
+      <button id="logoutBtn" class="hidden">Cerrar sesión</button>
+    </div>
+  </div>
+</header>
 
   <main class="container">
     <div class="card">
