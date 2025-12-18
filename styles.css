@@ -21,6 +21,8 @@ header {
   padding: 3rem 2rem;
   text-align: center;
   position: relative;
+  overflow: hidden;
+
 }
 
 header::before {
@@ -28,6 +30,7 @@ header::before {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
 }
 
 header h1,
@@ -35,6 +38,7 @@ header p {
   position: relative;
   z-index: 1;
 }
+
 
 header h1 {
   font-size: 2.5rem;
@@ -52,6 +56,7 @@ header p {
   right: 1.5rem;
   z-index: 2;
 }
+
 
 .user-menu button {
   background: rgba(255, 255, 255, 0.15);
@@ -73,6 +78,7 @@ header p {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   min-width: 160px;
+  z-index: 3;
 }
 
 .dropdown button {
@@ -111,6 +117,7 @@ header p {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -169,6 +176,11 @@ footer {
   z-index: 999;
 }
 
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .modal-content {
   background: #fff;
   padding: 2rem;
@@ -178,6 +190,9 @@ footer {
   text-align: center;
   transform: translateY(-30px);
   transition: transform 0.3s ease;
+}
+.modal.show .modal-content {
+  transform: translateY(0);
 }
 
 .modal input {
@@ -189,6 +204,7 @@ footer {
 }
 
 .modal button {
+  width: 100%;
   padding: 0.7rem 1rem;
   margin-top: 0.5rem;
   width: 100%;
@@ -211,11 +227,7 @@ footer {
   cursor: pointer;
 }
 
-/* Mostrar modal */
-.modal.show {
-  opacity: 1;
-  pointer-events: auto;
-}
+
 
 .modal.show .modal-content {
   transform: translateY(0);
