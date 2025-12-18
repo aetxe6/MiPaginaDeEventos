@@ -8,17 +8,30 @@
 </head>
 <body>
   <header>
-    <h1>Eventos Destacados</h1>
-    <p>Descubre los mejores eventos cerca de ti</p>
-    <div class="user-menu">
-      <button id="userBtn">👤</button>
-      <div id="dropdown" class="dropdown hidden">
-        <button id="loginBtn">Iniciar sesión</button>
-        <button id="registerBtn">Registrarse</button>
-        <button id="logoutBtn" class="hidden">Cerrar sesión</button>
-      </div>
+  <h1>Eventos Destacados</h1>
+  <p>Descubre los mejores eventos cerca de ti</p>
+
+  <div class="user-menu">
+    <button id="userBtn">👤</button>
+    <div id="dropdown" class="dropdown hidden">
+      <button id="loginBtn">Iniciar sesión</button>
+      <button id="registerBtn">Registrarse</button>
+      <button id="logoutBtn" class="hidden">Cerrar sesión</button>
     </div>
-  </header>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalTitle">Iniciar Sesión</h2>
+      <input type="text" id="username" placeholder="Usuario">
+      <input type="password" id="password" placeholder="Contraseña">
+      <button id="submitBtn">Entrar</button>
+    </div>
+  </div>
+</header>
+
 
   <main class="container">
     <!-- Cards de eventos -->
