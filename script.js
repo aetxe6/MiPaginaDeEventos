@@ -1,14 +1,25 @@
-// Referencias a elementos del menú
+// -------------------------
+// REFERENCIAS A ELEMENTOS
+// -------------------------
 const userBtn = document.getElementById("userBtn");
 const dropdown = document.getElementById("dropdown");
 const loginBtn = document.getElementById("loginBtn");
 const registerBtn = document.getElementById("registerBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
-// Estado de sesión
+const modal = document.getElementById("modal");
+const closeModal = document.getElementById("closeModal");
+const submitBtn = document.getElementById("submitBtn");
+const modalTitle = document.getElementById("modalTitle");
+
+// -------------------------
+// ESTADO DE SESIÓN
+// -------------------------
 let loggedIn = localStorage.getItem("loggedIn") === "true";
 
-// Función para actualizar el menú según si hay sesión
+// -------------------------
+// FUNCIONES
+// -------------------------
 function updateMenu() {
   if (loggedIn) {
     loginBtn.classList.add("hidden");
@@ -21,54 +32,35 @@ function updateMenu() {
   }
 }
 
-// Mostrar/ocultar dropdown al pulsar el icono
+// -------------------------
+// EVENT LISTENERS
+// -------------------------
+
+// Toggle dropdown
 userBtn.addEventListener("click", () => {
   dropdown.classList.toggle("hidden");
 });
 
-// Iniciar sesión (simulado)
-loginBtn.addEventListener("click", () => {
-  localStorage.setItem("loggedIn", "true");
-  loggedIn = true;
-  updateMenu();
-  alert("Sesión iniciada (simulada)");
-});
-
-// Registrarse (solo alerta)
-registerBtn.addEventListener("click", () => {
-  alert("Aquí iría el formulario de registro");
-});
-
-// Cerrar sesión
-logoutBtn.addEventListener("click", () => {
-  localStorage.removeItem("loggedIn");
-  loggedIn = false;
-  updateMenu();
-  alert("Sesión cerrada");
-});
-
-// Inicializar menú al cargar la página
-updateMenu();
-
-const modal = document.getElementById("modal");
-const closeModal = document.getElementById("closeModal");
-const submitBtn = document.getElementById("submitBtn");
-const modalTitle = document.getElementById("modalTitle");
-
+// Abrir modal de login
 loginBtn.addEventListener("click", () => {
   modal.classList.add("show");
   modalTitle.textContent = "Iniciar Sesión";
+  dropdown.classList.add("hidden"); // Oculta dropdown al abrir modal
 });
 
+// Abrir modal de registro
 registerBtn.addEventListener("click", () => {
   modal.classList.add("show");
   modalTitle.textContent = "Registrarse";
+  dropdown.classList.add("hidden"); // Oculta dropdown al abrir modal
 });
 
+// Cerrar modal
 closeModal.addEventListener("click", () => {
   modal.classList.remove("show");
 });
 
+// Login simulado al pulsar Entrar
 submitBtn.addEventListener("click", () => {
   loggedIn = true;
   localStorage.setItem("loggedIn", "true");
@@ -77,3 +69,20 @@ submitBtn.addEventListener("click", () => {
   alert("Sesión iniciada (simulada)");
 });
 
+// Cerrar sesión
+logoutBtn.addEventListener("click", () => {
+  loggedIn = false;
+  localStorage.removeItem("loggedIn");
+  updateMenu();
+  alert("Sesión cerrada");
+});
+
+// Cerrar modal al hacer click fuera del contenido
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("show");
+  }
+});
+
+// Inicializa menú al cargar
+updateMenu();
