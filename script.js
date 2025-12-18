@@ -49,3 +49,31 @@ logoutBtn.addEventListener("click", () => {
 
 // Inicializar menú al cargar la página
 updateMenu();
+
+const modal = document.getElementById("modal");
+const closeModal = document.getElementById("closeModal");
+const submitBtn = document.getElementById("submitBtn");
+const modalTitle = document.getElementById("modalTitle");
+
+loginBtn.addEventListener("click", () => {
+  modal.classList.add("show");
+  modalTitle.textContent = "Iniciar Sesión";
+});
+
+registerBtn.addEventListener("click", () => {
+  modal.classList.add("show");
+  modalTitle.textContent = "Registrarse";
+});
+
+closeModal.addEventListener("click", () => {
+  modal.classList.remove("show");
+});
+
+submitBtn.addEventListener("click", () => {
+  loggedIn = true;
+  localStorage.setItem("loggedIn", "true");
+  updateMenu();
+  modal.classList.remove("show");
+  alert("Sesión iniciada (simulada)");
+});
+
