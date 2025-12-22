@@ -95,23 +95,25 @@ const filterDropdown = document.getElementById("filterDropdown");
 const checkboxes = filterDropdown.querySelectorAll("input[type='checkbox']");
 const cards = document.querySelectorAll(".card");
 
-// Toggle dropdown filtros
+// Abrir/cerrar dropdown de filtros
 filterBtn.addEventListener("click", () => {
   filterDropdown.classList.toggle("hidden");
 });
 
-// Filtrar eventos
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener("change", () => {
-    // Array con categorías activas
-    const activeCategories = Array.from(checkboxes)
-      .filter(cb => cb.checked)
-      .map(cb => cb.value);
+// Función para filtrar cards
+function filterCards() {
+  const activeCategories = Array.from(checkboxes)
+    .filter(cb => cb.checked)
+    .map(cb => cb.value);
 
-    // Mostrar/ocultar cards según data-category
-    cards.forEach(card => {
-      const category = card.dataset.category;
-      card.style.display = (activeCategories.length === 0 || activeCategories.includes(category)) ? "block" : "none";
-    });
+  cards.forEach(card => {
+    const category = card.dataset.category;
+    // Mostrar card si coincide con alguna categoría activa o si no hay filtros activos
+    card.style.display = (activeCategories.length === 0 || activeCategories.includes(category)) ? "block" : "none";
   });
+}
+
+// Escuchar cambios en checkboxes
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener("change", filterCards);
 });
