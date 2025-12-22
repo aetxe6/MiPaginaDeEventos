@@ -144,8 +144,11 @@ header p {
   pointer-events: auto;     /* clicable al desplegar */
 }
 /* Clase hidden */
-.hidden {
+/*.hidden {
   display: block; /* dejamos que display siempre sea block; controlamos con opacity */
+/*}*/
+.hidden {
+  display: none; /* dejamos que display siempre sea block; controlamos con opacity */
 }
 /* Botón Filtrar */
 .filter-btn {
