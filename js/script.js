@@ -97,7 +97,7 @@ const cards = document.querySelectorAll(".card");
 
 // Abrir / cerrar filtro al pulsar botón
 filterBtn.addEventListener("click", (e) => {
-  e.stopPropagation(); // 👈 evita que el click llegue al document
+  e.stopPropagation();
   filterDropdown.classList.toggle("hidden");
 });
 
@@ -130,3 +130,4 @@ function filterCards() {
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener("change", filterCards);
 });
+
