@@ -24,10 +24,12 @@ function updateMenu() {
   if (loggedIn) {
     loginBtn.classList.add("hidden");
     registerBtn.classList.add("hidden");
+    wishlistBtn.classList.remove("hidden"); // NUEVO
     logoutBtn.classList.remove("hidden");
   } else {
     loginBtn.classList.remove("hidden");
     registerBtn.classList.remove("hidden");
+    wishlistBtn.classList.add("hidden");   // NUEVO
     logoutBtn.classList.add("hidden");
   }
 }
