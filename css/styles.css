@@ -98,12 +98,7 @@ header p {
   background: #f4f6f8;
 }
 
-/* =========================
-   UTILIDADES
-========================= */
-.hidden {
-  display: none;
-}
+
 
 /* =========================
    BARRA DE FILTROS
@@ -126,6 +121,7 @@ header p {
   font-size: 0.9rem;
 }
 
+
 /* Dropdown filtros */
 .filter-dropdown {
   position: absolute;
@@ -135,11 +131,32 @@ header p {
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   padding: 0.8rem 1rem;
+  display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  opacity: 0;              /* invisible al inicio */
+  pointer-events: none;     /* no clicable al inicio */
+  transition: opacity 0.3s ease;
   z-index: 50;
 }
-
+.filter-dropdown:not(.hidden) {
+  opacity: 1;               /* visible al desplegar */
+  pointer-events: auto;     /* clicable al desplegar */
+}
+/* Clase hidden */
+.hidden {
+  display: block; /* dejamos que display siempre sea block; controlamos con opacity */
+}
+/* Botón Filtrar */
+.filter-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
 
 .filter-dropdown label {
   font-size: 0.9rem;
