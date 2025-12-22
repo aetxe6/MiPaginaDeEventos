@@ -6,6 +6,7 @@ const dropdown = document.getElementById("dropdown");
 const loginBtn = document.getElementById("loginBtn");
 const registerBtn = document.getElementById("registerBtn");
 const logoutBtn = document.getElementById("logoutBtn");
+const wishlistBtn = document.getElementById("wishlistBtn");
 
 const modal = document.getElementById("modal");
 const closeModal = document.getElementById("closeModal");
