@@ -1,47 +1,99 @@
-<main class="container">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos Modernos</title>
 
-  <!-- CONCIERTO -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1518972559570-0f8c7f6d6b9f" alt="Concierto" />
-    <div class="card-content">
-      <span class="category category-1">🎵 Concierto</span>
-      <h3>Concierto en Vivo</h3>
-      <p>Disfruta de una noche increíble con música en vivo y artistas invitados.</p>
-      <span>📅 20 de Julio · 📍 Madrid</span>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Eventos Destacados</h1>
+    <p>Descubre los mejores eventos cerca de ti</p>
+
+    <!-- Menú usuario -->
+    <div class="user-menu">
+      <button id="userBtn">👤</button>
+      <div id="dropdown" class="dropdown hidden">
+        <button id="loginBtn">Iniciar sesión</button>
+        <button id="registerBtn">Registrarse</button>
+        <button id="logoutBtn" class="hidden">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MODAL LOGIN / REGISTRO -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalTitle">Iniciar Sesión</h2>
+      <input type="text" id="username" placeholder="Usuario">
+      <input type="password" id="password" placeholder="Contraseña">
+      <button id="submitBtn">Entrar</button>
     </div>
   </div>
 
-  <!-- TEATRO -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754" alt="Teatro" />
-    <div class="card-content">
-      <span class="category category-2">🎭 Teatro</span>
-      <h3>Obra de Teatro Clásica</h3>
-      <p>Una puesta en escena emocionante con actores de primer nivel.</p>
-      <span>📅 5 de Agosto · 📍 Barcelona</span>
-    </div>
-  </div>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
 
-  <!-- EXPOSICIÓN -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Exposición" />
-    <div class="card-content">
-      <span class="category category-3">🖼️ Exposición</span>
-      <h3>Exposición de Arte Moderno</h3>
-      <p>Explora las últimas tendencias del arte contemporáneo.</p>
-      <span>📅 22 de Agosto · 📍 Bilbao</span>
+    <!-- CONCIERTO -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1518972559570-0f8c7f6d6b9f" alt="Concierto">
+      <div class="card-content">
+        <span class="category category-1">🎵 Concierto</span>
+        <h3>Concierto en Vivo</h3>
+        <p>Disfruta de una noche increíble con música en vivo y artistas invitados.</p>
+        <span>📅 20 de Julio · 📍 Madrid</span>
+      </div>
     </div>
-  </div>
 
-  <!-- DISCOTECA / FESTIVAL -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf" alt="Festival" />
-    <div class="card-content">
-      <span class="category category-4">🎉 Discoteca / Festival</span>
-      <h3>Festival de Verano</h3>
-      <p>Música, luces y diversión hasta el amanecer.</p>
-      <span>📅 12 de Septiembre · 📍 Valencia</span>
+    <!-- TEATRO -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754" alt="Teatro">
+      <div class="card-content">
+        <span class="category category-2">🎭 Teatro</span>
+        <h3>Obra de Teatro Clásica</h3>
+        <p>Una puesta en escena emocionante con actores de primer nivel.</p>
+        <span>📅 5 de Agosto · 📍 Barcelona</span>
+      </div>
     </div>
-  </div>
 
-</main>
+    <!-- EXPOSICIÓN -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Exposición">
+      <div class="card-content">
+        <span class="category category-3">🖼️ Exposición</span>
+        <h3>Exposición de Arte Moderno</h3>
+        <p>Explora las últimas tendencias del arte contemporáneo.</p>
+        <span>📅 22 de Agosto · 📍 Bilbao</span>
+      </div>
+    </div>
+
+    <!-- DISCOTECA / FESTIVAL -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf" alt="Festival">
+      <div class="card-content">
+        <span class="category category-4">🎉 Discoteca / Festival</span>
+        <h3>Festival de Verano</h3>
+        <p>Música, luces y diversión hasta el amanecer.</p>
+        <span>📅 12 de Septiembre · 📍 Valencia</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Eventos Modernos. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
