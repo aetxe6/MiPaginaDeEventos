@@ -86,3 +86,34 @@ modal.addEventListener("click", (e) => {
 
 // Inicializa menú al cargar
 updateMenu();
+
+// FILTRO DE EVENTOS
+const filterBtn = document.getElementById("filterBtn");
+const filterDropdown = document.getElementById("filterDropdown");
+const checkboxes = filterDropdown.querySelectorAll("input[type='checkbox']");
+const cards = document.querySelectorAll(".card");
+
+// Abrir/cerrar filtro
+filterBtn.addEventListener("click", () => {
+  filterDropdown.classList.toggle("hidden");
+});
+
+// Filtrar eventos
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener("change", () => {
+    const activeCategories = Array.from(checkboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+
+    cards.forEach(card => {
+      const category = card.dataset.category;
+
+      if (activeCategories.length === 0 || activeCategories.includes(category)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+
