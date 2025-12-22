@@ -1,4 +1,6 @@
-/* Reset y base */
+/* =========================
+   RESET Y BASE
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +13,9 @@ body {
   color: #333;
 }
 
-/* Header */
+/* =========================
+   HEADER
+========================= */
 header {
   background-image: url('../image/Donostia.jpg');
   background-size: cover;
@@ -22,7 +26,6 @@ header {
   text-align: center;
   position: relative;
   overflow: hidden;
-
 }
 
 header::before {
@@ -39,7 +42,6 @@ header p {
   z-index: 1;
 }
 
-
 header h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
@@ -49,14 +51,15 @@ header p {
   opacity: 0.9;
 }
 
-/* Menú de usuario */
+/* =========================
+   MENÚ DE USUARIO
+========================= */
 .user-menu {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  z-index: 2;
+  z-index: 5;
 }
-
 
 .user-menu button {
   background: rgba(255, 255, 255, 0.15);
@@ -68,7 +71,7 @@ header p {
   cursor: pointer;
 }
 
-/* Dropdown */
+/* Dropdown usuario */
 .dropdown {
   position: absolute;
   right: 0;
@@ -78,7 +81,7 @@ header p {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   min-width: 160px;
-  z-index: 3;
+  z-index: 6;
 }
 
 .dropdown button {
@@ -88,19 +91,65 @@ header p {
   background: none;
   text-align: left;
   cursor: pointer;
-  color: #000; /* 👈 TEXTO NEGRO */
+  color: #000;
 }
 
 .dropdown button:hover {
   background: #f4f6f8;
 }
 
-/* Utilidades */
+/* =========================
+   UTILIDADES
+========================= */
 .hidden {
   display: none;
 }
 
-/* Contenedor de eventos */
+/* =========================
+   BARRA DE FILTROS
+========================= */
+.filter-bar {
+  max-width: 1100px;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+  position: relative;
+}
+
+/* Botón Filtrar */
+.filter-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Dropdown filtros */
+.filter-dropdown {
+  position: absolute;
+  top: 2.8rem;
+  left: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 50; /* 👈 importante */
+}
+
+.filter-dropdown label {
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* =========================
+   CONTENEDOR DE EVENTOS
+========================= */
 .container {
   max-width: 1100px;
   margin: 2rem auto;
@@ -110,7 +159,9 @@ header p {
   gap: 1.5rem;
 }
 
-/* Cards */
+/* =========================
+   CARDS
+========================= */
 .card {
   background: white;
   border-radius: 16px;
@@ -151,15 +202,28 @@ header p {
   color: #666;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  background: #111827;
-  color: #9ca3af;
-  margin-top: 2rem;
+/* =========================
+   CATEGORÍAS DE EVENTOS
+========================= */
+.category {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.6rem;
 }
-/* Modal */
+
+/* Colores por tipo */
+.category-1 { background-color: #4f46e5; } /* Concierto */
+.category-2 { background-color: #10b981; } /* Teatro */
+.category-3 { background-color: #f59e0b; } /* Exposición */
+.category-4 { background-color: #ef4444; } /* Discoteca / Festival */
+
+/* =========================
+   MODAL
+========================= */
 .modal {
   position: fixed;
   top: 0;
@@ -191,6 +255,7 @@ footer {
   transform: translateY(-30px);
   transition: transform 0.3s ease;
 }
+
 .modal.show .modal-content {
   transform: translateY(0);
 }
@@ -207,7 +272,6 @@ footer {
   width: 100%;
   padding: 0.7rem 1rem;
   margin-top: 0.5rem;
-  width: 100%;
   background: #4f46e5;
   color: #fff;
   border: none;
@@ -227,67 +291,13 @@ footer {
   cursor: pointer;
 }
 
-
-
-.modal.show .modal-content {
-  transform: translateY(0);
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #111827;
+  color: #9ca3af;
+  margin-top: 2rem;
 }
-
-/* Categorías de eventos */
-.category {
-  display: inline-block;
-  padding: 0.35rem 0.7rem;
-  border-radius: 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 0.6rem;
-}
-
-/* Colores por tipo */
-.category-1 { background-color: #4f46e5; } /* Concierto */
-.category-2 { background-color: #10b981; } /* Teatro */
-.category-3 { background-color: #f59e0b; } /* Exposición */
-.category-4 { background-color: #ef4444; } /* Discoteca / Festival */
-
-/* Barra de filtros */
-.filter-bar {
-  max-width: 1100px;
-  margin: 2rem auto 1rem;
-  padding: 0 1rem;
-  position: relative;
-}
-
-/* Botón ovalado */
-#filterBtn {
-  padding: 0.5rem 1.2rem;
-  border-radius: 999px;
-  border: none;
-  background: #4f46e5;
-  color: white;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-/* Dropdown filtros */
-.filter-dropdown {
-  position: absolute;
-  top: 2.8rem;
-  left: 1rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  padding: 0.8rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  z-index: 10;
-}
-
-.filter-dropdown label {
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-
-
