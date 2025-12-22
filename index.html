@@ -35,9 +35,19 @@
     <button id="submitBtn">Entrar</button>
   </div>
 </div>
+<div class="filter-bar">
+  <button id="filterBtn">Filtrar ▾</button>
 
+  <div id="filterDropdown" class="filter-dropdown hidden">
+    <label><input type="checkbox" value="concierto"> Concierto</label>
+    <label><input type="checkbox" value="teatro"> Teatro</label>
+    <label><input type="checkbox" value="exposicion"> Exposición</label>
+    <label><input type="checkbox" value="festival"> Discoteca / Festival</label>
+  </div>
+</div>
+  
 <main class="container">
-  <div class="card">
+  <div class="card" data-category="concierto">
     <img src="https://images.unsplash.com/photo-1518972559570-0f8c7f6d6b9f" alt="Concierto">
     <div class="card-content">
       <h3>Concierto en Vivo</h3>
@@ -46,8 +56,8 @@
     </div>
   </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Conferencia">
+  <div class="card" data-category="teatro">
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Teatro">
     <div class="card-content">
       <h3>Conferencia Tech</h3>
       <p>Aprende sobre tecnología y programación.</p>
@@ -55,7 +65,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-category="festival">
     <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf" alt="Festival">
     <div class="card-content">
       <h3>Festival Cultural</h3>
@@ -64,6 +74,7 @@
     </div>
   </div>
 </main>
+
 
 <footer>
   <p>© 2025 Eventos Modernos</p>
