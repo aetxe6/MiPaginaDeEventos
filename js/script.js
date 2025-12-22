@@ -88,16 +88,27 @@ modal.addEventListener("click", (e) => {
 updateMenu();
 
 // -------------------------
-// FILTRO DE EVENTOS
+// FILTRO DE EVENTOS (UX)
 // -------------------------
 const filterBtn = document.getElementById("filterBtn");
 const filterDropdown = document.getElementById("filterDropdown");
 const checkboxes = filterDropdown.querySelectorAll("input[type='checkbox']");
 const cards = document.querySelectorAll(".card");
 
-// Abrir/cerrar dropdown de filtros
-filterBtn.addEventListener("click", () => {
+// Abrir / cerrar filtro al pulsar botón
+filterBtn.addEventListener("click", (e) => {
+  e.stopPropagation(); // 👈 evita que el click llegue al document
   filterDropdown.classList.toggle("hidden");
+});
+
+// Evitar que clicks dentro del dropdown lo cierren
+filterDropdown.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// Cerrar filtro al hacer click fuera
+document.addEventListener("click", () => {
+  filterDropdown.classList.add("hidden");
 });
 
 // Función para filtrar cards
@@ -108,12 +119,14 @@ function filterCards() {
 
   cards.forEach(card => {
     const category = card.dataset.category;
-    // Mostrar card si coincide con alguna categoría activa o si no hay filtros activos
-    card.style.display = (activeCategories.length === 0 || activeCategories.includes(category)) ? "block" : "none";
+    card.style.display =
+      activeCategories.length === 0 || activeCategories.includes(category)
+        ? "block"
+        : "none";
   });
 }
 
-// Escuchar cambios en checkboxes
+// Escuchar cambios en los checkboxes
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener("change", filterCards);
 });
