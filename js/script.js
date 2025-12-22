@@ -87,13 +87,15 @@ modal.addEventListener("click", (e) => {
 // Inicializa menú al cargar
 updateMenu();
 
+// -------------------------
 // FILTRO DE EVENTOS
+// -------------------------
 const filterBtn = document.getElementById("filterBtn");
 const filterDropdown = document.getElementById("filterDropdown");
 const checkboxes = filterDropdown.querySelectorAll("input[type='checkbox']");
 const cards = document.querySelectorAll(".card");
 
-// Abrir/cerrar filtro
+// Toggle dropdown filtros
 filterBtn.addEventListener("click", () => {
   filterDropdown.classList.toggle("hidden");
 });
@@ -101,19 +103,15 @@ filterBtn.addEventListener("click", () => {
 // Filtrar eventos
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener("change", () => {
+    // Array con categorías activas
     const activeCategories = Array.from(checkboxes)
       .filter(cb => cb.checked)
       .map(cb => cb.value);
 
+    // Mostrar/ocultar cards según data-category
     cards.forEach(card => {
       const category = card.dataset.category;
-
-      if (activeCategories.length === 0 || activeCategories.includes(category)) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
+      card.style.display = (activeCategories.length === 0 || activeCategories.includes(category)) ? "block" : "none";
     });
   });
 });
-
