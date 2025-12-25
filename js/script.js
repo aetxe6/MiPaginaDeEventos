@@ -221,32 +221,6 @@ eventModal.addEventListener("click", (e) => {
   }
 });
 
-
-addToWishlistBtn.addEventListener("click", () => {
-  if (!loggedIn) {
-    alert("Debes iniciar sesión para añadir eventos a tu lista");
-    return;
-  }
-
-  alert("Evento añadido a tu lista (simulado)");
-});
-
-wishlistBtn.addEventListener("click", () => {
-  dropdown.classList.add("hidden");
-  renderWishlist();
-  wishlistModal.classList.add("show");
-});
-
-closeWishlistModal.addEventListener("click", () => {
-  wishlistModal.classList.remove("show");
-});
-
-wishlistModal.addEventListener("click", (e) => {
-  if (e.target === wishlistModal) {
-    wishlistModal.classList.remove("show");
-  }
-});
-
 addToWishlistBtn.addEventListener("click", () => {
   if (!loggedIn) {
     alert("Debes iniciar sesión para añadir eventos");
@@ -272,4 +246,9 @@ addToWishlistBtn.addEventListener("click", () => {
   alert("Evento añadido a tu lista");
 });
 
+wishlistBtn.addEventListener("click", () => {
+  dropdown.classList.add("hidden");
+  renderWishlist();
+  wishlistModal.classList.add("show");
+});
 
