@@ -25,6 +25,8 @@ const closeWishlistModal = document.getElementById("closeWishlistModal");
 const wishlistContainer = document.getElementById("wishlistContainer");
 const wishlistEmpty = document.getElementById("wishlistEmpty");
 
+
+
 function getWishlist() {
   return JSON.parse(localStorage.getItem("wishlist")) || [];
 }
@@ -60,11 +62,11 @@ function renderWishlist() {
 }
 
 
-
 // -------------------------
 // ESTADO DE SESIÓN
 // -------------------------
 let loggedIn = localStorage.getItem("loggedIn") === "true";
+let currentEvent = null;
 
 // -------------------------
 // FUNCIONES
@@ -145,6 +147,21 @@ const filterBtn = document.getElementById("filterBtn");
 const filterDropdown = document.getElementById("filterDropdown");
 const checkboxes = filterDropdown.querySelectorAll("input[type='checkbox']");
 const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    currentEvent = {
+      title: card.querySelector("h3").textContent,
+      description: card.querySelector("p").textContent
+    };
+
+    eventTitle.textContent = currentEvent.title;
+    eventDescription.textContent = currentEvent.description;
+
+    eventModal.classList.add("show");
+  });
+});
+
 
 // Abrir / cerrar filtro al pulsar botón
 filterBtn.addEventListener("click", (e) => {
@@ -230,6 +247,29 @@ wishlistModal.addEventListener("click", (e) => {
   }
 });
 
+addToWishlistBtn.addEventListener("click", () => {
+  if (!loggedIn) {
+    alert("Debes iniciar sesión para añadir eventos");
+    return;
+  }
 
+  if (!currentEvent) return;
+
+  const wishlist = getWishlist();
+
+  const exists = wishlist.some(
+    event => event.title === currentEvent.title
+  );
+
+  if (exists) {
+    alert("Este evento ya está en tu lista");
+    return;
+  }
+
+  wishlist.push(currentEvent);
+  saveWishlist(wishlist);
+
+  alert("Evento añadido a tu lista");
+});
 
 
