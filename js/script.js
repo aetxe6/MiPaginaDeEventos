@@ -18,7 +18,6 @@ const eventModal = document.getElementById("eventModal");
 const closeEventModal = document.getElementById("closeEventModal");
 const eventTitle = document.getElementById("eventTitle");
 const eventDescription = document.getElementById("eventDescription");
-const addToWishlistBtn = document.getElementById("addToWishlistBtn");
 // Wishlist
 const wishlistModal = document.getElementById("wishlistModal");
 const closeWishlistModal = document.getElementById("closeWishlistModal");
