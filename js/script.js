@@ -19,6 +19,46 @@ const closeEventModal = document.getElementById("closeEventModal");
 const eventTitle = document.getElementById("eventTitle");
 const eventDescription = document.getElementById("eventDescription");
 const addToWishlistBtn = document.getElementById("addToWishlistBtn");
+// Wishlist
+const wishlistModal = document.getElementById("wishlistModal");
+const closeWishlistModal = document.getElementById("closeWishlistModal");
+const wishlistContainer = document.getElementById("wishlistContainer");
+const wishlistEmpty = document.getElementById("wishlistEmpty");
+
+function getWishlist() {
+  return JSON.parse(localStorage.getItem("wishlist")) || [];
+}
+
+function saveWishlist(wishlist) {
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}
+
+function renderWishlist() {
+  const wishlist = getWishlist();
+  wishlistContainer.innerHTML = "";
+
+  if (wishlist.length === 0) {
+    wishlistEmpty.style.display = "block";
+    return;
+  }
+
+  wishlistEmpty.style.display = "none";
+
+  wishlist.forEach(event => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <div class="card-content">
+        <h3>${event.title}</h3>
+        <p>${event.description}</p>
+      </div>
+    `;
+
+    wishlistContainer.appendChild(card);
+  });
+}
+
 
 
 // -------------------------
@@ -173,6 +213,23 @@ addToWishlistBtn.addEventListener("click", () => {
 
   alert("Evento añadido a tu lista (simulado)");
 });
+
+wishlistBtn.addEventListener("click", () => {
+  dropdown.classList.add("hidden");
+  renderWishlist();
+  wishlistModal.classList.add("show");
+});
+
+closeWishlistModal.addEventListener("click", () => {
+  wishlistModal.classList.remove("show");
+});
+
+wishlistModal.addEventListener("click", (e) => {
+  if (e.target === wishlistModal) {
+    wishlistModal.classList.remove("show");
+  }
+});
+
 
 
 
