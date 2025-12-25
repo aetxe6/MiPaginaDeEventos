@@ -13,6 +13,14 @@ const closeModal = document.getElementById("closeModal");
 const submitBtn = document.getElementById("submitBtn");
 const modalTitle = document.getElementById("modalTitle");
 
+// Modal de eventos
+const eventModal = document.getElementById("eventModal");
+const closeEventModal = document.getElementById("closeEventModal");
+const eventTitle = document.getElementById("eventTitle");
+const eventDescription = document.getElementById("eventDescription");
+const addToWishlistBtn = document.getElementById("addToWishlistBtn");
+
+
 // -------------------------
 // ESTADO DE SESIÓN
 // -------------------------
@@ -133,4 +141,38 @@ function filterCards() {
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener("change", filterCards);
 });
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    const title = card.querySelector("h3").textContent;
+    const description = card.querySelector("p").textContent;
+
+    eventTitle.textContent = title;
+    eventDescription.textContent = description;
+
+    eventModal.classList.add("show");
+  });
+});
+
+closeEventModal.addEventListener("click", () => {
+  eventModal.classList.remove("show");
+});
+
+eventModal.addEventListener("click", (e) => {
+  if (e.target === eventModal) {
+    eventModal.classList.remove("show");
+  }
+});
+
+
+addToWishlistBtn.addEventListener("click", () => {
+  if (!loggedIn) {
+    alert("Debes iniciar sesión para añadir eventos a tu lista");
+    return;
+  }
+
+  alert("Evento añadido a tu lista (simulado)");
+});
+
+
 
