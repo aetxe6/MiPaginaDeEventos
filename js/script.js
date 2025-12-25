@@ -24,9 +24,12 @@ const wishlistModal = document.getElementById("wishlistModal");
 const closeWishlistModal = document.getElementById("closeWishlistModal");
 const wishlistContainer = document.getElementById("wishlistContainer");
 const wishlistEmpty = document.getElementById("wishlistEmpty");
+const wishlistBtn = document.getElementById("wishlistBtn");
+const addToWishlistBtn = document.getElementById("addToWishlistBtn"); // botón dentro del modal si lo tienes
 
 
 
+//----------------------------
 function getWishlist() {
   return JSON.parse(localStorage.getItem("wishlist")) || [];
 }
@@ -35,38 +38,21 @@ function saveWishlist(wishlist) {
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
 }
 
-function renderWishlist() {
-  const wishlist = getWishlist();
-  wishlistContainer.innerHTML = "";
-
-  if (wishlist.length === 0) {
-    wishlistEmpty.style.display = "block";
-    return;
-  }
-
-  wishlistEmpty.style.display = "none";
-
-  wishlist.forEach(event => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-      <div class="card-content">
-        <h3>${event.title}</h3>
-        <p>${event.description}</p>
-      </div>
-    `;
-
-    wishlistContainer.appendChild(card);
+function showAllCards() {
+  cards.forEach(card => {
+    card.style.display = "block";
   });
 }
+//----------------------------
+
 
 
 // -------------------------
 // ESTADO DE SESIÓN
 // -------------------------
 let loggedIn = localStorage.getItem("loggedIn") === "true";
-let currentEvent = null;
+let currentEventId = null; // almacena la card seleccionada
+
 
 // -------------------------
 // FUNCIONES
@@ -150,17 +136,15 @@ const cards = document.querySelectorAll(".card");
 
 cards.forEach(card => {
   card.addEventListener("click", () => {
-    currentEvent = {
-      title: card.querySelector("h3").textContent,
-      description: card.querySelector("p").textContent
-    };
+    currentEventId = card.dataset.id; // guardamos el ID de la card
 
-    eventTitle.textContent = currentEvent.title;
-    eventDescription.textContent = currentEvent.description;
-
-    eventModal.classList.add("show");
+    // Opcional: si quieres abrir un modal con detalle del evento
+    // eventTitle.textContent = card.querySelector("h3").textContent;
+    // eventDescription.textContent = card.querySelector("p").textContent;
+    // eventModal.classList.add("show");
   });
 });
+
 
 
 // Abrir / cerrar filtro al pulsar botón
@@ -223,32 +207,40 @@ eventModal.addEventListener("click", (e) => {
 
 addToWishlistBtn.addEventListener("click", () => {
   if (!loggedIn) {
-    alert("Debes iniciar sesión para añadir eventos");
+    alert("Debes iniciar sesión");
     return;
   }
-
-  if (!currentEvent) return;
 
   const wishlist = getWishlist();
 
-  const exists = wishlist.some(
-    event => event.title === currentEvent.title
-  );
-
-  if (exists) {
+  if (!wishlist.includes(currentEventId)) {
+    wishlist.push(currentEventId);
+    saveWishlist(wishlist);
+    alert("Evento añadido a tu lista");
+  } else {
     alert("Este evento ya está en tu lista");
-    return;
   }
-
-  wishlist.push(currentEvent);
-  saveWishlist(wishlist);
-
-  alert("Evento añadido a tu lista");
 });
 
 wishlistBtn.addEventListener("click", () => {
+  const wishlist = getWishlist();
+
+  cards.forEach(card => {
+    if (wishlist.includes(card.dataset.id)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+
   dropdown.classList.add("hidden");
-  renderWishlist();
-  wishlistModal.classList.add("show");
 });
+
+logoutBtn.addEventListener("click", () => {
+  loggedIn = false;
+  localStorage.removeItem("loggedIn");
+  updateMenu();
+  showAllCards();
+});
+
 
