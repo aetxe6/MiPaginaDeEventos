@@ -22,11 +22,12 @@ header {
   background-repeat: no-repeat;
   background-position: center 40%;
   color: white;
-  padding: 3rem 2rem;
+  padding: 3rem 2rem; /* la altura de la franja viene de aquí */
   text-align: center;
-  position: relative;
+  position: relative; /* necesario para posicionar .user-menu */
   overflow: hidden;
 }
+
 
 header::before {
   content: "";
@@ -50,15 +51,40 @@ header h1 {
 header p {
   opacity: 0.9;
 }
+.home-title {
+  cursor: pointer;
+}
+
+.home-title:hover {
+  text-decoration: underline;
+}
+
 
 /* =========================
    MENÚ DE USUARIO
 ========================= */
 .user-menu {
-  position: absolute;
+  position: absolute;  /* flotando sobre la franja */
   top: 1.5rem;
   right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   z-index: 5;
+}
+
+.wishlist-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  font-size: 0.85rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.wishlist-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .user-menu button {
@@ -74,6 +100,7 @@ header p {
 /* Dropdown usuario */
 .dropdown {
   position: absolute;
+  top: 100%;
   right: 0;
   margin-top: 0.5rem;
   background: white;
