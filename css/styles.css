@@ -249,6 +249,11 @@ header p {
   color: #666;
 }
 
+#mapBtn {
+  margin-left: 0.5rem;
+}
+
+
 /* =========================
    CATEGORÍAS DE EVENTOS
 ========================= */
@@ -263,10 +268,12 @@ header p {
 }
 
 /* Colores por tipo */
-.category-1 { background-color: #4f46e5; } /* Concierto */
-.category-2 { background-color: #10b981; } /* Teatro */
-.category-3 { background-color: #f59e0b; } /* Exposición */
-.category-4 { background-color: #ef4444; } /* Discoteca / Festival */
+/* Colores por tipo */
+.category-1 { background-color: #d110a7; } /* Concierto - negro */
+.category-2 { background-color: #05d8f4; } /* Teatro - azul marino */
+.category-3 { background-color: #f59e0b; } /* Exposición - amarillo */
+.category-4 { background-color: #800020; } /* Festival / Discoteca - burdeos */
+
 
 /* =========================
    MODAL
@@ -348,3 +355,80 @@ footer {
   color: #9ca3af;
   margin-top: 2rem;
 }
+
+.filter-bar {
+  max-width: 1100px;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+  position: relative;
+  display: flex;
+  align-items: center; /* alineamos input y botón verticalmente */
+  gap: 0.5rem; /* espacio entre input y botón */
+}
+
+.search-input {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  outline: none;
+  width: 200px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+#mapContainer {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+.cards-container,
+#mapContainer {
+  width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Botón añadir a lista - verde */
+.add-to-wishlist {
+  background-color: #10b981; /* verde */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.add-to-wishlist:hover {
+  background-color: #059669; /* verde más oscuro al pasar el mouse */
+}
+
+/* Botón eliminar de la lista - rojo */
+.remove-from-wishlist {
+  background-color: #ef4444; /* rojo */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.remove-from-wishlist:hover {
+  background-color: #b91c1c; /* rojo más oscuro al pasar el mouse */
+}
+
+
+

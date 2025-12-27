@@ -11,93 +11,173 @@
 <body>
 
   <!-- HEADER -->
-  <header>
-    <h1 id="homeBtn" class="home-title">Eventos Destacados</h1>
-    <p>Descubre los mejores eventos cerca de ti</p>
+<header>
+  <h1 id="homeBtn" class="home-title">Eventos Destacados</h1>
+  <p>Descubre los mejores eventos cerca de ti</p>
 
-    <div class="user-menu">
-      <button id="wishlistBtn" class="wishlist-btn hidden">⭐ Mi lista</button>
-      <button id="userBtn">👤</button>
+  <div class="user-menu">
+    <button id="wishlistBtn" class="wishlist-btn hidden">⭐ Mi lista</button>
+    <button id="userBtn">👤</button>
 
-      <div id="dropdown" class="dropdown hidden">
-        <button id="loginBtn">Iniciar sesión</button>
-        <button id="registerBtn">Registrarse</button>
-        <button id="logoutBtn" class="hidden">Cerrar sesión</button>
-      </div>
+    <div id="dropdown" class="dropdown hidden">
+      <button id="loginBtn">Iniciar sesión</button>
+      <button id="registerBtn">Registrarse</button>
+      <button id="logoutBtn" class="hidden">Cerrar sesión</button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- FILTRO DE EVENTOS -->
-  <div class="filter-bar">
-    <button id="filterBtn" class="filter-btn">Filtrar ▾</button>
 
-    <div id="filterDropdown" class="filter-dropdown hidden">
-      <label><input type="checkbox" value="concierto"> Concierto</label>
-      <label><input type="checkbox" value="teatro"> Teatro</label>
-      <label><input type="checkbox" value="exposicion"> Exposición</label>
-      <label><input type="checkbox" value="festival"> Discoteca / Festival</label>
+  <!-- MODAL LOGIN / REGISTRO -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+
+      <h2 id="modalTitle">Iniciar Sesión</h2>
+
+      <input type="text" id="username" placeholder="Usuario">
+      <input type="password" id="password" placeholder="Contraseña">
+
+      <button id="submitBtn">Entrar</button>
     </div>
   </div>
 
-  <!-- EVENTOS -->
-  <main class="container">
+  <!-- MODAL DETALLE EVENTO -->
+<div id="eventModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeEventModal" class="close">&times;</span>
 
-    <div class="card" data-id="1" data-category="concierto" onclick="location.href='evento1.html'">
+    <h2 id="eventTitle"></h2>
+    <p id="eventDescription"></p>
+
+    <button id="addToWishlistBtn">Añadir a la lista personal</button>
+  </div>
+</div>
+  <!-- MODAL LISTA DE DESEOS -->
+<div id="wishlistModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeWishlistModal" class="close">&times;</span>
+
+    <h2>Mi lista de eventos</h2>
+
+    <div id="wishlistContainer" class="container"></div>
+
+    <p id="wishlistEmpty" style="display:none;">
+      No tienes eventos guardados todavía.
+    </p>
+  </div>
+</div>
+
+
+
+
+  <!-- FILTRO DE EVENTOS -->
+ <div class="filter-bar">
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar eventos...">
+    <button id="filterBtn" class="filter-btn">Filtrar ▾</button>
+    <button id="mapBtn" class="filter-btn">Mapa de eventos🌍</button> <!-- NUEVO BOTÓN -->
+
+
+    <div id="filterDropdown" class="filter-dropdown hidden">
+      
+      <label>
+        <input type="checkbox" value="concierto">
+        Concierto
+      </label>
+
+      <label>
+        <input type="checkbox" value="teatro">
+        Teatro
+      </label>
+
+      <label>
+        <input type="checkbox" value="exposicion">
+        Exposición
+      </label>
+
+      <label>
+        <input type="checkbox" value="festival">
+        Discoteca / Festival
+      </label>
+    </div>
+  </div>
+
+
+  <!-- EVENTOS -->
+  <!-- CONTENEDOR PRINCIPAL -->
+<div id="mainContent">
+
+  <!-- Cards -->
+  <main class="cards-container container">
+    <div class="card" data-id="1" data-category="concierto" data-lat="40.4168" data-lng="-3.7038">
       <img src="https://images.unsplash.com/photo-1518972559570-0f8c7f6d6b9f" alt="Concierto" />
       <span class="category category-1">Concierto</span>
       <div class="card-content">
         <h3>Concierto en Vivo</h3>
         <p>Disfruta de una noche increíble con música en vivo.</p>
         <span>📅 20 de Julio · 📍 Madrid</span>
-        <button class="add-to-wishlist">Añadir a lista</button>
+        <button class="add-to-wishlist">Añadir a la lista</button>
         <button class="remove-from-wishlist hidden">Eliminar de la lista</button>
       </div>
     </div>
 
-    <div class="card" data-id="2" data-category="teatro" onclick="location.href='evento2.html'">
+    <div class="card" data-id="2" data-category="teatro" data-lat="41.3851" data-lng="2.1734">
       <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Teatro" />
       <span class="category category-2">Teatro</span>
       <div class="card-content">
         <h3>Obra de Teatro</h3>
         <p>Una experiencia cultural única.</p>
         <span>📅 5 de Agosto · 📍 Barcelona</span>
-        <button class="add-to-wishlist">Añadir a lista</button>
+        <button class="add-to-wishlist">Añadir a la lista</button>
         <button class="remove-from-wishlist hidden">Eliminar de la lista</button>
       </div>
     </div>
 
-    <div class="card" data-id="3" data-category="exposicion" onclick="location.href='evento3.html'">
+    <div class="card" data-id="3" data-category="exposicion" data-lat="39.4699" data-lng="-0.3763">
       <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf" alt="Exposición" />
       <span class="category category-3">Exposición</span>
       <div class="card-content">
         <h3>Exposición de Arte</h3>
         <p>Arte y creatividad en estado puro.</p>
         <span>📅 12 de Septiembre · 📍 Valencia</span>
-        <button class="add-to-wishlist">Añadir a lista</button>
+        <button class="add-to-wishlist">Añadir a la lista</button>
         <button class="remove-from-wishlist hidden">Eliminar de la lista</button>
       </div>
     </div>
 
-    <div class="card" data-id="4" data-category="festival" onclick="location.href='evento4.html'">
+    <div class="card" data-id="4" data-category="festival" data-lat="38.9067" data-lng="1.4206">
       <img src="https://images.unsplash.com/photo-1497032205916-ac775f0649ae" alt="Festival" />
       <span class="category category-4">Festival</span>
       <div class="card-content">
         <h3>Festival Nocturno</h3>
         <p>Música, luces y diversión hasta el amanecer.</p>
         <span>📅 30 de Agosto · 📍 Ibiza</span>
-        <button class="add-to-wishlist">Añadir a lista</button>
+        <button class="add-to-wishlist">Añadir a la lista</button>
         <button class="remove-from-wishlist hidden">Eliminar de la lista</button>
       </div>
     </div>
-
   </main>
+
+  <!-- Mapa -->
+  <div id="mapContainer" class="hidden" style="height: 500px;"></div>
+
+</div>
+
 
   <!-- FOOTER -->
   <footer>
     <p>© 2025 Eventos Modernos. Todos los derechos reservados.</p>
   </footer>
 
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
   <!-- JS -->
   <script src="js/script.js"></script>
+
 </body>
 </html>
