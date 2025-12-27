@@ -11,16 +11,13 @@ const eventId = params.get("id");
 const eventData = {
   "1": {
     title: "Concierto en Vivo",
-    description: `¡Prepárate para vivir la experiencia musical más increíble del año! 
-      Nuestro concierto en vivo reúne a artistas de renombre, efectos visuales impactantes
-      y un ambiente único que hará que quieras estar en primera fila. ¡No te lo pierdas!`,
-    cover: "https://images.unsplash.com/photo-1518972559570-0f8c7f6d6b9f"
+    description: `En junio de 2025, Bruce Springsteen & The E Street Band llegarán a Donostia con dos conciertos previstos en el Estadio Reale Arena (Anoeta), los días 21 y 24 de junio, como parte de su gira europea. Se espera que el legendario artista estadounidense, acompañado de su mítica banda, ofrezca un espectáculo lleno de energía, interpretando desde sus grandes éxitos como Born to Run hasta temas más recientes. Miles de asistentes podrán disfrutar de noches memorables llenas de música, emoción y mensajes de esperanza y libertad, mientras la ciudad se prepara para vibrar con su presencia.`,
+    cover: "../image/concierto.jpg"
   },
   "2": {
     title: "Obra de Teatro",
-    description: `Una obra que combina talento actoral, escenografía impecable y una historia que te hará reflexionar.
-      Ideal para los amantes de la cultura y la creatividad. Reserva tu asiento y vive la magia del teatro.`,
-    cover: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+    description: `Durante 2025, el Antzoki Zaharra —Teatro Principal de Donostia— acogerá una programación teatral variada dentro de la temporada de Donostia Kultura. Entre los eventos destacados se prevé la Muestra de Teatro Joven, con obras como El teatro es un asco, una sátira sobre los clichés del teatro contemporáneo. También se representarán montajes como ¿Sabes que las flores de plástico nunca han vivido, verdad?, combinando drama y comedia en torno a la identidad y las relaciones familiares. Este emblemático espacio de la Parte Vieja continuará consolidando su papel como referente cultural local en 2025.`,
+    cover: "../image/antzoki zaharra.jpg"
   },
   "3": {
     title: "Exposición de Arte",
@@ -32,14 +29,16 @@ const eventData = {
     objetos decorativos que reflejan los profundos cambios culturales y científicos de la época. A través 
     de bordados, estampados y complementos, la exposición invita a contemplar la transformación estética y 
     simbólica de la flora en la indumentaria.`,
-    cover: "C:\Users\pc\Documents\Eventos\MiPaginaDeEventos\image\Museo San Telmo.jpg"
-    //cover: "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf"
+    cover: "../image/Museo San Telmo.jpg"
+    
   },
   "4": {
     title: "Festival Nocturno",
-    description: `Sumérgete en la experiencia nocturna más divertida y vibrante. Música, luces, DJs internacionales 
-      y un ambiente que no olvidarás. Prepárate para bailar toda la noche y disfrutar con tus amigos.`,
-    cover: "https://images.unsplash.com/photo-1497032205916-ac775f0649ae"
+    description: `El Festival de Jazz de San Sebastián —Donostiako Jazzaldia— es una cita musical anual que transforma Donostia en el epicentro del jazz durante cinco días cada julio. Fundado en 1966, es el festival de jazz más antiguo de España y uno de los más prestigiosos de Europa, con cerca de cien conciertos repartidos en escenarios urbanos, desde playas y plazas hasta auditorios y teatros. 
+ La programación mezcla actuaciones gratuitas y de pago con artistas internacionales de renombre y talentos emergentes, creando un ambiente festivo que inunda toda la ciudad. 
+ Además, el público puede disfrutar de espacios emblemáticos como la playa de Zurriola, la Plaza de la Trinidad o el Kursaal, lo que convierte al Jazzaldia en una experiencia cultural y musical única. 
+.`,
+    cover: "../image/jazzaldia.jpg"
   }
 };
 

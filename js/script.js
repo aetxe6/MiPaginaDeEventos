@@ -29,10 +29,10 @@ let markers = []; // para guardar los marcadores
 
 // Datos de ejemplo de eventos con lat/lng
 const eventLocations = [
-  { id: "1", title: "Concierto en Vivo", lat: 40.4168, lng: -3.7038 }, // Madrid
-  { id: "2", title: "Obra de Teatro", lat: 41.3851, lng: 2.1734 }, // Barcelona
-  { id: "3", title: "Exposición de Arte", lat: 39.4699, lng: -0.3763 }, // Valencia
-  { id: "4", title: "Festival Nocturno", lat: 38.9067, lng: 1.4206 }, // Ibiza
+  { id: "1", title: "Concierto en Vivo", lat: 43.30126382921542, lng: -1.9744438700375722 },
+  { id: "2", title: "Obra de Teatro", lat: 43.32272517870711, lng: -1.9856465883199799 },
+  { id: "3", title: "Exposición de Arte", lat: 43.3251724845734, lng: -1.9848547325000765 },
+  { id: "4", title: "Festival Nocturno", lat: 43.325641883420786, lng: -1.978224972430884 },
 ];
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
