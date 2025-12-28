@@ -4,25 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalle del Evento</title>
+  <!-- CSS -->
   <link rel="stylesheet" href="css/eventos.css">
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 </head>
 <body>
   <!-- Encabezado del evento con fondo -->
-  <header id="eventHeader">
-    <!-- Botones wishlist en la esquina superior derecha -->
-    <button id="addToWishlistBtn" class="wishlist-action-btn">Añadir a lista</button>
-    <button id="removeFromWishlistBtn" class="wishlist-action-btn hidden">Eliminar de la lista</button>
+  <header id="eventHeader" class="event-header">
+    <h1 id="eventTitle"></h1>
+    <div class="user-menu">
+    <button id="wishlistBtn" class="wishlist-btn hidden">⭐ Mi lista</button>
+    <button id="userBtn">👤</button>
 
-    <h1 id="eventTitle">Título del Evento</h1>
+    <div id="dropdown" class="dropdown hidden">
+      <button id="loginBtn">Iniciar sesión</button>
+      <button id="registerBtn">Registrarse</button>
+      <button id="logoutBtn" class="hidden">Cerrar sesión</button>
+    </div>
+  </div>
+    <div class="wishlist-buttons">
+      <button id="addToWishlistBtn" class="hidden">Añadir a lista</button>
+      <button id="removeFromWishlistBtn" class="hidden">Eliminar de la lista</button>
+    </div>
   </header>
-
   <!-- Contenido del evento -->
   <main class="event-content">
-    <p id="eventDescription">
-      Aquí va la descripción del evento, diseñada para que el público quiera inscribirse.
-    </p>
-  </main>
+    <p id="eventDescription"></p>
+    <!-- MAPA DEL EVENTO -->
+    <div id="eventMap"></div>
 
+  </main>
+  <!-- Modal de login/registro -->
+<div id="modal" class="hidden">
+  <div class="modal-content">
+    <span id="closeModal">×</span>
+    <h2 id="modalTitle"></h2>
+    <!-- Campos de usuario y contraseña -->
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button id="submitBtn">Aceptar</button>
+  </div>
+</div>
   <footer>
     <p>© 2025 Eventos Modernos. Todos los derechos reservados.</p>
   </footer>

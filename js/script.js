@@ -24,6 +24,13 @@ const mapContainer = document.getElementById("mapContainer");
 let map; // variable global Leaflet
 let markers = []; // para guardar los marcadores
 
+//nuevo!!!
+// Detectamos si venimos desde "Mi lista"
+let showWishlist = localStorage.getItem("showWishlist") === "true";
+
+// Limpiamos el flag para no afectar futuras visitas
+localStorage.removeItem("showWishlist");
+
 
 
 
@@ -106,11 +113,26 @@ function updateWishlistButtons(card) {
 
 // Muestra todas las cards y actualiza botones
 function renderAllCards() {
+  const wishlist = getWishlist();
+
   cards.forEach(card => {
-    card.style.display = "block";
+    const eventId = card.dataset.id;
+
+    // Si queremos mostrar solo la wishlist, ocultamos las demás cards
+    if (showWishlist) {
+      if (wishlist.includes(eventId)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    } else {
+      card.style.display = "block"; // mostramos todas
+    }
+
     updateWishlistButtons(card);
   });
 }
+
 
 // Función para ir a la página de detalle
 function goToEvent(eventId) {
@@ -232,19 +254,15 @@ logoutBtn.addEventListener("click", () => {
 
 // Mostrar wishlist: solo cards guardadas
 wishlistBtn.addEventListener("click", () => {
-  const wishlist = getWishlist();
-  cards.forEach(card => {
-    if (wishlist.includes(card.dataset.id)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  });
+  showWishlist = true;
+  renderAllCards();
   dropdown.classList.add("hidden");
 });
 
+
 // Home: mostrar todas las cards
 homeBtn.addEventListener("click", () => {
+  showWishlist = false;
   renderAllCards();
 });
 
