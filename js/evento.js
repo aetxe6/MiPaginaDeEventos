@@ -37,7 +37,23 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTicketButton();
   */
   let ticketPurchased = false; // estado inicial
-  
+  // Al iniciar sesión
+function login() {
+  localStorage.setItem("loggedIn", "true");
+  localStorage.setItem("userEmail", "correo@usuario.com"); // opcional
+}
+
+// Al cerrar sesión
+function logout() {
+  localStorage.removeItem("loggedIn");
+  localStorage.removeItem("userEmail");
+}
+
+// Comprobar sesión
+function isLoggedIn() {
+  return localStorage.getItem("loggedIn") === "true";
+}
+
 
   // Pulsar botón principal
 buyBtn.addEventListener("click", () => {
@@ -342,3 +358,27 @@ myEventsBtn.addEventListener("click", () => {
 
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const wishlistBtn = document.getElementById("wishlistBtn");
+
+  function updateUserMenu() {
+    if (isLoggedIn()) {
+      loginBtn.classList.add("hidden");
+      logoutBtn.classList.remove("hidden");
+      wishlistBtn.classList.remove("hidden");
+    } else {
+      loginBtn.classList.remove("hidden");
+      logoutBtn.classList.add("hidden");
+      wishlistBtn.classList.add("hidden");
+    }
+  }
+
+  updateUserMenu();
+
+  logoutBtn.addEventListener("click", () => {
+    logout();
+    updateUserMenu();
+  });
+});
