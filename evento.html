@@ -21,6 +21,8 @@
   <header id="eventHeader" class="event-header">
     <h1 id="eventTitle"></h1>
     <div class="user-menu">
+    <button id="myEventsBtn">Mis eventos</button>
+    <button class="remove-event hidden">Eliminar de mis eventos</button>
     <button id="wishlistBtn" class="wishlist-btn hidden">⭐ Mi lista</button>
     <button id="userBtn">👤</button>
 
@@ -29,10 +31,14 @@
       <button id="registerBtn">Registrarse</button>
       <button id="logoutBtn" class="hidden">Cerrar sesión</button>
     </div>
-  </div>
-    <div class="wishlist-buttons">
+    </div>
+    <div class="wishlist-buttons"> 
       <button id="addToWishlistBtn" class="hidden">Añadir a lista</button>
       <button id="removeFromWishlistBtn" class="hidden">Eliminar de la lista</button>
+    </div>
+    <div class="event-purchase">
+      <span class="event-price">25 €</span>
+      <button id="buyTicketBtn">Comprar entrada</button>
     </div>
   </header>
   <!-- Contenido del evento -->
@@ -51,6 +57,42 @@
     <input type="text" id="username" placeholder="Usuario">
     <input type="password" id="password" placeholder="Contraseña">
     <button id="submitBtn">Aceptar</button>
+  </div>
+</div>
+<div id="buyModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeBuyModal" class="close">&times;</span>
+
+    <h2>Pago de entrada</h2>
+
+    <form id="buyForm">
+      <label>
+        Nombre del titular
+        <input type="text" id="cardName" required />
+      </label>
+
+      <label>
+        Número de tarjeta
+        <input type="text" id="cardNumber" maxlength="16" required />
+      </label>
+
+      <label>
+        Fecha de caducidad
+        <input type="month" id="cardExpiry" required />
+      </label>
+
+      <label>
+        CVV
+        <input type="text" id="cardCvv" maxlength="3" required />
+      </label>
+
+      <label>
+        Correo electrónico
+        <input type="email" id="cardEmail" required />
+      </label>
+
+      <button type="submit" class="pay-btn">Confirmar pago</button>
+    </form>
   </div>
 </div>
   <footer>

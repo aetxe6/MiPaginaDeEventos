@@ -21,10 +21,12 @@ const cardsContainer = document.querySelector(".cards-container");
 const searchInput = document.getElementById("searchInput");
 const mapContainer = document.getElementById("mapContainer");
 
+const myEventsBtn = document.getElementById("myEventsBtn");
+
+
 let map; // variable global Leaflet
 let markers = []; // para guardar los marcadores
 
-//nuevo!!!
 // Detectamos si venimos desde "Mi lista"
 let showWishlist = localStorage.getItem("showWishlist") === "true";
 
@@ -137,6 +139,48 @@ function renderAllCards() {
 // Función para ir a la página de detalle
 function goToEvent(eventId) {
   window.location.href = `evento.html?id=${eventId}`;
+}
+
+function parseDate(dateString) {
+  const [year, month, day] = dateString.split("-");
+  return new Date(year, month - 1, day);
+}
+
+// Función para ordenar las cards por fecha
+function sortCardsByDate(option) {
+  const cardsArray = Array.from(cards);
+
+  cardsArray.sort((a, b) => {
+    const dateA = new Date(a.dataset.date);
+    const dateB = new Date(b.dataset.date);
+
+    if (option === "nearest") return dateA - dateB;
+    if (option === "farthest") return dateB - dateA;
+
+    return 0;
+  });
+
+  // Reordenar en el DOM
+  cardsArray.forEach(card => {
+    cardsContainer.appendChild(card);
+    card.style.display = "block";
+  });
+}
+function getMisEventos() {
+  return JSON.parse(localStorage.getItem("misEventos")) || [];
+}
+
+function showMisEventos() {
+  const misEventos = getMisEventos();
+
+  cards.forEach(card => {
+    const eventId = card.dataset.id;
+    if (misEventos.includes(eventId)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
 }
 
 
@@ -339,6 +383,56 @@ filterBtn.addEventListener("click", (e) => {
   e.stopPropagation(); // evitar que se cierre al click fuera
   filterDropdown.classList.toggle("hidden");
 });
+
+const dateCheckboxes = document.querySelectorAll(
+  'input[name="dateOrder"]'
+);
+
+dateCheckboxes.forEach(checkbox => {
+  checkbox.addEventListener("change", () => {
+
+    // 1️⃣ Desmarcar el resto
+    dateCheckboxes.forEach(other => {
+      if (other !== checkbox) {
+        other.checked = false;
+      }
+    });
+
+    // 2️⃣ Si el actual queda marcado → ordenar
+    if (checkbox.checked) {
+      sortCardsByDate(checkbox.value); // "nearest" o "farthest"
+    }
+  });
+});
+
+myEventsBtn.addEventListener("click", () => {
+  if (!loggedIn) {
+    alert("Debes iniciar sesión para ver tus eventos");
+    return;
+  }
+
+  localStorage.setItem("showMyEvents", "true"); // guardamos flag
+  window.location.href = "index.html";          // redirigimos a home
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const showMyEvents = localStorage.getItem("showMyEvents") === "true";
+  localStorage.removeItem("showMyEvents");
+
+  const misEventos = JSON.parse(localStorage.getItem("misEventos")) || [];
+  const allCards = document.querySelectorAll(".card");
+
+  allCards.forEach(card => {
+    const id = card.dataset.id;
+    if (showMyEvents && !misEventos.includes(id)) {
+      card.style.display = "none";
+    } else {
+      card.style.display = "block";
+    }
+  });
+});
+
 
 
 

@@ -16,8 +16,10 @@
   <p>Descubre los mejores eventos en Donostia</p>
 
   <div class="user-menu">
+    <button id="myEventsBtn">Mis eventos</button>
     <button id="wishlistBtn" class="wishlist-btn hidden">⭐ Mi lista</button>
     <button id="userBtn">👤</button>
+    
 
     <div id="dropdown" class="dropdown hidden">
       <button id="loginBtn">Iniciar sesión</button>
@@ -54,7 +56,7 @@
   </div>
 </div>
   <!-- MODAL LISTA DE DESEOS -->
-<div id="wishlistModal" class="modal hidden">
+<div id="wishlistModal" class="modal hidden"> 
   <div class="modal-content">
     <span id="closeWishlistModal" class="close">&times;</span>
 
@@ -99,6 +101,18 @@
         <input type="checkbox" value="festival">
         Discoteca / Festival
       </label>
+      <hr>
+
+      <label>
+        <input type="checkbox" name="dateOrder" value="nearest">
+        Fecha más cercana
+      </label>
+
+      <label>
+        <input type="checkbox" name="dateOrder" value="farthest">
+        Fecha más lejana
+      </label>
+
     </div>
   </div>
 
@@ -109,48 +123,52 @@
 
   <!-- Cards -->
   <main class="cards-container container">
-    <div class="card" data-id="1" data-category="concierto" data-lat="43.30095150872728" data-lng="-1.9747228197751192">
+    <div class="card" data-id="1" data-category="concierto" data-lat="43.30095150872728" data-lng="-1.9747228197751192" data-date="2025-07-20">
       <img src="image/concierto.jpg" alt="Concierto" />
       <span class="category category-1">Concierto</span>
       <div class="card-content">
         <h3>Concierto en Vivo</h3>
         <p>Disfruta de una noche increíble con música en vivo.</p>
+        <span class="event-price">70 €</span>
         <span>📅 20 de Julio · 📍 Donostia</span>
         <button class="add-to-wishlist">Añadir a la lista</button>
         <button class="remove-from-wishlist hidden">Eliminar de la lista</button>
       </div>
     </div>
 
-    <div class="card" data-id="2" data-category="teatro" data-lat="43.322597602247356" data-lng="-1.9856501235843842">
+    <div class="card" data-id="2" data-category="teatro" data-lat="43.322597602247356" data-lng="-1.9856501235843842" data-date="2025-08-05">
       <img src="image/antzoki zaharra.jpg" alt="Teatro" />
       <span class="category category-2">Teatro</span>
       <div class="card-content">
         <h3>Obra de Teatro</h3>
         <p>Una experiencia cultural única.</p>
+        <span class="event-price">20 €</span>
         <span>📅 5 de Agosto · 📍 Donostia</span>
         <button class="add-to-wishlist">Añadir a la lista</button>
         <button class="remove-from-wishlist hidden">Eliminar de la lista</button>
       </div>
     </div>
 
-    <div class="card" data-id="3" data-category="exposicion" data-lat="43.3251724845734" data-lng="-1.9848547325000765">
+    <div class="card" data-id="3" data-category="exposicion" data-lat="43.3251724845734" data-lng="-1.9848547325000765" data-date="2025-09-12">
       <img src="image/Museo San Telmo.jpg" alt="Exposición" />
       <span class="category category-3">Exposición</span>
       <div class="card-content">
         <h3>Exposición de Arte</h3>
         <p>Arte y creatividad en estado puro.</p>
+        <span class="event-price">15 €</span>
         <span>📅 12 de Septiembre · 📍 Donostia</span>
         <button class="add-to-wishlist">Añadir a la lista</button>
         <button class="remove-from-wishlist hidden">Eliminar de la lista</button>
       </div>
     </div>
 
-    <div class="card" data-id="4" data-category="festival" data-lat="43.325641883420786" data-lng="-1.978224972430884">
+    <div class="card" data-id="4" data-category="festival" data-lat="43.325641883420786" data-lng="-1.978224972430884" data-date="2025-08-30">
       <img src="image/jazzaldia.jpg" alt="Festival" />
       <span class="category category-4">Festival</span>
       <div class="card-content">
         <h3>Festival Nocturno</h3>
         <p>Música, luces y diversión hasta el amanecer.</p>
+        <span class="event-price">Gratis</span>
         <span>📅 30 de Agosto · 📍 Donostia</span>
         <button class="add-to-wishlist">Añadir a la lista</button>
         <button class="remove-from-wishlist hidden">Eliminar de la lista</button>

@@ -16,12 +16,65 @@ document.addEventListener("DOMContentLoaded", () => {
   const wishlistBtn = document.getElementById("wishlistBtn");
 
   const params = new URLSearchParams(window.location.search);
+
   const eventId = params.get("id"); // string
+  
+
   const modal = document.getElementById("modal");
   const closeModal = document.getElementById("closeModal");
   const submitBtn = document.getElementById("submitBtn");
   const modalTitle = document.getElementById("modalTitle");
 
+  const myEventsBtn = document.getElementById("myEventsBtn");
+  const buyBtn = document.getElementById("buyTicketBtn");
+  const buyModal = document.getElementById("buyModal");
+  const closeBuyModal = document.getElementById("closeBuyModal");
+  const payBtn = document.querySelector(".pay-btn"); // clase .pay-btn
+
+  
+  /*
+  let ticketPurchased = localStorage.getItem(`ticket_${eventId}`) === "true";
+  updateTicketButton();
+  */
+  let ticketPurchased = false; // estado inicial
+  
+
+  // Pulsar botón principal
+buyBtn.addEventListener("click", () => {
+  if (ticketPurchased) {
+    // Si ya está comprada, desmarcar
+    ticketPurchased = false;
+    updateTicketButton();
+  } else {
+    // Si no está comprada, abrir modal
+    buyModal.classList.remove("hidden");
+  }
+});
+
+// Confirmar pago en modal
+payBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // evitar submit
+
+  ticketPurchased = true;       // marcar como comprada
+  updateTicketButton();         // actualizar botón
+  buyModal.classList.add("hidden"); // cerrar modal
+});
+
+
+  // Función para actualizar el botón según el estado
+function updateTicketButton() {
+  if (ticketPurchased) {
+    buyBtn.textContent = "Entrada comprada";
+    buyBtn.style.backgroundColor = "#ef4444";
+    buyBtn.style.color = "white";
+  } else {
+    buyBtn.textContent = "Comprar entrada";
+    buyBtn.style.backgroundColor = "#10b981";
+    buyBtn.style.color = "white";
+  }
+}
+// Inicializar botón
+updateTicketButton();
 
   let loggedIn = localStorage.getItem("loggedIn") === "true";
   // Después de definir loggedIn
@@ -98,6 +151,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   updateWishlistButtons(); // ✅ Aquí se decide qué botón mostrar
 }
+/*
+function updateUserMenu() {
+  if (loggedIn) {
+    loginBtn.classList.add("hidden");
+    registerBtn.classList.add("hidden");
+    wishlistBtn.classList.remove("hidden");
+    logoutBtn.classList.remove("hidden");
+  } else {
+    loginBtn.classList.remove("hidden");
+    registerBtn.classList.remove("hidden");
+    wishlistBtn.classList.add("hidden");
+    logoutBtn.classList.add("hidden");
+  }
+  updateWishlistButtons(); // ✅ Aquí se decide qué botón mostrar
+}
+*/
+
+payBtn.addEventListener("click", () => {
+  localStorage.setItem(`ticket_${eventId}`, "true");
+
+  let misEventos = JSON.parse(localStorage.getItem("misEventos")) || [];
+  if (!misEventos.includes(eventId)) {
+    misEventos.push(eventId);
+    localStorage.setItem("misEventos", JSON.stringify(misEventos));
+  }
+
+  updateTicketButton();
+  buyModal.classList.add("hidden");
+});
+
+// Inicializar botón
+updateTicketButton();
 
 
   userBtn.addEventListener("click", e => {
@@ -191,17 +276,19 @@ registerBtn.addEventListener("click", e => {
 });
 
 // Cerrar modal con botón
-closeModal.addEventListener("click", () => {
-  modal.classList.remove("show");
-  modal.classList.add("hidden");
+function closeModalFunction(modalElement) {
+  modalElement.classList.add("hidden");
+  modalElement.classList.remove("show");
+}
+
+closeModal.addEventListener("click", () => closeModalFunction(modal));
+modal.addEventListener("click", e => {
+  if (e.target === modal) closeModalFunction(modal);
 });
 
-// Cerrar modal al hacer click fuera del contenido
-modal.addEventListener("click", e => {
-  if (e.target === modal) {
-    modal.classList.remove("show");
-    modal.classList.add("hidden");
-  }
+closeBuyModal.addEventListener("click", () => closeModalFunction(buyModal));
+buyModal.addEventListener("click", e => {
+  if (e.target === buyModal) closeModalFunction(buyModal);
 });
 
 // Login simulado
@@ -222,5 +309,36 @@ modal.addEventListener("click", e => {
   }
 });
 
+payBtn.addEventListener("click", () => {
+  ticketPurchased = true;
+  localStorage.setItem(`ticket_${eventId}`, "true");
+
+  let misEventos = JSON.parse(localStorage.getItem("misEventos")) || [];
+  if (!misEventos.includes(eventId)) {
+    misEventos.push(eventId);
+    localStorage.setItem("misEventos", JSON.stringify(misEventos));
+  }
+
+  updateTicketButton();
+  buyModal.classList.add("hidden");
+});
+
+
+
+
+
+buyModal.addEventListener("click", (e) => {
+  if (e.target === buyModal) {
+    buyModal.classList.add("hidden");
+  }
+});
+
+myEventsBtn.addEventListener("click", () => {
+  // Guardamos un flag indicando que queremos ver solo nuestros eventos
+  localStorage.setItem("showMyEvents", "true");
+  // Redirigimos a la página principal
+  window.location.href = "index.html";
+});
 
 });
+

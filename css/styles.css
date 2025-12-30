@@ -430,5 +430,36 @@ footer {
   background-color: #b91c1c; /* rojo más oscuro al pasar el mouse */
 }
 
+.card {
+  position: relative;
+}
+
+.event-price {
+  position: absolute;
+  top: 140px;           /* ajusta según altura de la imagen */
+  right: 12px;
+
+  background-color: #ffffffbb;
+  color: #000000;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+#myEventsBtn {
+  background-color: #6366f1; /* azul/violeta */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#myEventsBtn:hover {
+  background-color: #4f46e5;
+}
 
 
