@@ -23,6 +23,21 @@ const mapContainer = document.getElementById("mapContainer");
 
 const myEventsBtn = document.getElementById("myEventsBtn");
 
+const donostiaLat = 43.3215;
+const donostiaLng = -1.9856;
+
+const neighborhoodSelect = document.getElementById("neighborhoodFilter");
+
+// Tomamos todas las opciones excepto "Todos"
+const options = Array.from(neighborhoodSelect.querySelectorAll("option"))
+  .filter(opt => opt.value !== "")
+  .sort((a, b) => a.textContent.localeCompare(b.textContent));
+
+// Limpiamos y añadimos de nuevo
+neighborhoodSelect.innerHTML = '<option value="">Todos</option>';
+options.forEach(opt => neighborhoodSelect.appendChild(opt));
+
+
 
 let map; // variable global Leaflet
 let markers = []; // para guardar los marcadores
@@ -58,6 +73,7 @@ searchInput.addEventListener("input", () => {
     }
   });
 });
+
 
 
 // -------------------------
@@ -101,11 +117,13 @@ function updateMenu() {
     registerBtn.classList.add("hidden");
     wishlistBtn.classList.remove("hidden");
     logoutBtn.classList.remove("hidden");
+    myEventsBtn.classList.remove("hidden");
   } else {
     loginBtn.classList.remove("hidden");
     registerBtn.classList.remove("hidden");
     wishlistBtn.classList.add("hidden");
     logoutBtn.classList.add("hidden");
+    myEventsBtn.classList.add("hidden");
   }
 }
 
@@ -221,7 +239,7 @@ mapBtn.addEventListener("click", (e) => {
     mapBtn.textContent = "Volver a lista";
 
     if (!map) {
-      map = L.map("mapContainer").setView([40.4168, -3.7038], 5);
+      map = L.map("mapContainer").setView([donostiaLat, donostiaLng], 12);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; OpenStreetMap contributors'
@@ -235,7 +253,18 @@ mapBtn.addEventListener("click", (e) => {
         const title = card.querySelector("h3").textContent;
 
         const marker = L.marker([lat, lng]).addTo(map);
-        marker.bindPopup(`<b>${title}</b><br><button onclick="window.location.href='evento.html?id=${id}'">Ver detalle</button>`);
+        const imgSrc = card.querySelector("img").src;
+
+        const popupHtml = `
+          <div class="popup-event" style="background-image: url('${imgSrc}')">
+            <div class="popup-event-title">${title}</div>
+            <button class="popup-event-btn" onclick="window.location.href='evento.html?id=${id}'">
+            Ver detalle
+            </button>
+          </div>
+        `;
+
+        marker.bindPopup(popupHtml);
         markers.push(marker);
       });
     }
@@ -325,9 +354,20 @@ wishlistBtn.addEventListener("click", () => {
 
 // Home: mostrar todas las cards
 homeBtn.addEventListener("click", () => {
+  // Si el mapa está visible
+  if (!mapContainer.classList.contains("hidden")) {
+    mapContainer.classList.add("hidden");    // ocultamos mapa
+    cardsContainer.classList.remove("hidden"); // mostramos cards
+    mapBtn.textContent = "Mapa de eventos🌍";  // restauramos texto botón
+  } else {
+    // Si el mapa ya está oculto, solo mostramos todas las cards
+    renderAllCards();
+  }
+  
   showWishlist = false;
   renderAllCards();
 });
+
 
 // -------------------------
 // BOTONES DE CADA CARD
@@ -381,21 +421,33 @@ const filterDropdown = document.getElementById("filterDropdown");
 
 const filterCheckboxes = filterDropdown.querySelectorAll("input[type=checkbox]");
 
-filterCheckboxes.forEach(checkbox => {
-  checkbox.addEventListener("change", () => {
-    const selectedCategories = Array.from(filterCheckboxes)
-      .filter(cb => cb.checked)
-      .map(cb => cb.value);
+const neighborhoodFilter = document.getElementById("neighborhoodFilter");
 
-    cards.forEach(card => {
-      if (selectedCategories.length === 0 || selectedCategories.includes(card.dataset.category)) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
+function filterCards() {
+  const selectedCategories = Array.from(filterCheckboxes)
+    .filter(cb => cb.checked)
+    .map(cb => cb.value);
+
+  const selectedNeighborhood = neighborhoodFilter.value;
+
+  cards.forEach(card => {
+    const category = card.dataset.category;
+    const neighborhood = card.dataset.neighborhood;
+
+    const showByCategory = selectedCategories.length === 0 || selectedCategories.includes(category);
+    const showByNeighborhood = selectedNeighborhood === "" || neighborhood === selectedNeighborhood;
+
+    if (showByCategory && showByNeighborhood) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
   });
-});
+}
+
+// listeners
+filterCheckboxes.forEach(cb => cb.addEventListener("change", filterCards));
+neighborhoodFilter.addEventListener("change", filterCards);
 
 
 filterBtn.addEventListener("click", (e) => {

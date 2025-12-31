@@ -59,6 +59,14 @@ body {
   color: white;
   font-weight: bold;
 }
+.wishlist-buttons .wishlist-btn {
+  background-color: #6366f1;   /* azul/violeta inicial */
+  border-radius: 8px;
+}
+
+.wishlist-buttons .wishlist-btn:hover {
+  background-color: #4f46e5;
+}
 
 #addToWishlistBtn {
   background-color: #10b981; /* verde */
@@ -112,6 +120,28 @@ body {
   padding: 0.5rem 0.7rem;
   border-radius: 50%;
   cursor: pointer;
+}
+/* =========================
+   BOTONES UNIFICADOS AZUL/VIOLETA
+========================= */
+.user-menu .wishlist-btn,
+.user-menu #myEventsBtn,
+.user-menu #userBtn {
+  background-color: #6366f1;   /* azul/violeta inicial */
+  color: white;
+  border: none;
+  border-radius: 8px;          /* rectangular con esquinas suaves */
+  padding: 12px 18px;          /* más grande */
+  font-size: 1rem;             /* letra más grande */
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.user-menu .wishlist-btn:hover,
+.user-menu #myEventsBtn:hover,
+.user-menu #userBtn:hover {
+  background-color: #4f46e5;   /* más oscuro al hover */
 }
 
 /* Dropdown usuario */
@@ -300,8 +330,8 @@ footer {
 .event-price {
   font-size: 1.3rem;
   font-weight: bold;
-  background-color: #000;
-  color: #fff;
+  background-color: #ffffffdc;
+  color: #000000;
   padding: 8px 14px;
   border-radius: 10px;
 }

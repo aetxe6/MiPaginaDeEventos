@@ -112,7 +112,22 @@
         <input type="checkbox" name="dateOrder" value="farthest">
         Fecha más lejana
       </label>
+      <hr>
 
+      <label for="neighborhoodFilter">Barrio:</label>
+      <select id="neighborhoodFilter">
+        <option value="">Todos los barrios</option>
+        <option value="Amara">Amara</option>
+        <option value="Parte Vieja">Parte Vieja</option>
+        <option value="Centro">Centro</option>
+        <option value="Gros">Gros</option>
+        <option value="Centro">Centro</option>
+        <option value="Antiguo">Antiguo</option>
+        <option value="Egia">Egia</option>
+        <option value="Egia">Aiete</option>
+        <option value="Otros">Otros</option>
+      </select>
+      
     </div>
   </div>
 
@@ -123,7 +138,7 @@
 
   <!-- Cards -->
   <main class="cards-container container">
-    <div class="card" data-id="1" data-category="concierto" data-lat="43.30095150872728" data-lng="-1.9747228197751192" data-date="2025-07-20">
+    <div class="card" data-id="1" data-category="concierto" data-lat="43.30095150872728" data-lng="-1.9747228197751192" data-date="2025-07-20" data-neighborhood="Amara">
       <img src="image/concierto.jpg" alt="Concierto" />
       <span class="category category-1">Concierto</span>
       <div class="card-content">
@@ -136,7 +151,7 @@
       </div>
     </div>
 
-    <div class="card" data-id="2" data-category="teatro" data-lat="43.322597602247356" data-lng="-1.9856501235843842" data-date="2025-08-05">
+    <div class="card" data-id="2" data-category="teatro" data-lat="43.322597602247356" data-lng="-1.9856501235843842" data-date="2025-08-05" data-neighborhood="Parte Vieja">
       <img src="image/antzoki zaharra.jpg" alt="Teatro" />
       <span class="category category-2">Teatro</span>
       <div class="card-content">
@@ -149,7 +164,7 @@
       </div>
     </div>
 
-    <div class="card" data-id="3" data-category="exposicion" data-lat="43.3251724845734" data-lng="-1.9848547325000765" data-date="2025-09-12">
+    <div class="card" data-id="3" data-category="exposicion" data-lat="43.3251724845734" data-lng="-1.9848547325000765" data-date="2025-09-12" data-neighborhood="Centro">
       <img src="image/Museo San Telmo.jpg" alt="Exposición" />
       <span class="category category-3">Exposición</span>
       <div class="card-content">
@@ -162,7 +177,7 @@
       </div>
     </div>
 
-    <div class="card" data-id="4" data-category="festival" data-lat="43.325641883420786" data-lng="-1.978224972430884" data-date="2025-08-30">
+    <div class="card" data-id="4" data-category="festival" data-lat="43.325641883420786" data-lng="-1.978224972430884" data-date="2025-08-30" data-neighborhood="Gros">
       <img src="image/jazzaldia.jpg" alt="Festival" />
       <span class="category category-4">Festival</span>
       <div class="card-content">

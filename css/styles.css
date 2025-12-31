@@ -73,18 +73,19 @@ header p {
   z-index: 5;
 }
 
-.wishlist-btn {
-  background: rgba(255, 255, 255, 0.15);
-  border: none;
+.user-menu .wishlist-btn {
+  background-color: #6366f1;   /* azul/violeta inicial */
   color: white;
+  border: none;
   font-size: 0.85rem;
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
+  padding: 8px 12px;
+  border-radius: 8px;          /* rectangular */
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.wishlist-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
+.user-menu .wishlist-btn:hover {
+  background-color: #4f46e5;
 }
 
 .user-menu button {
@@ -95,6 +96,30 @@ header p {
   padding: 0.5rem 0.7rem;
   border-radius: 50%;
   cursor: pointer;
+}
+.user-menu #userBtn {
+  background-color: #6366f1;  /* azul/violeta */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+
+.user-menu #userBtn:hover {
+  background-color: #4f46e5; /* más oscuro al pasar el mouse */
+}
+.user-menu .wishlist-btn,
+.user-menu #myEventsBtn,
+.user-menu #userBtn {
+  padding: 12px 18px;       
+  font-size: 1rem;          
+  border-radius: 8px;       
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 /* Dropdown usuario */
@@ -438,15 +463,12 @@ footer {
   position: absolute;
   top: 140px;           /* ajusta según altura de la imagen */
   right: 12px;
-
-  background-color: #ffffffbb;
+  background-color: #ffffffdc;
   color: #000000;
-
   padding: 6px 10px;
   border-radius: 8px;
-
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 1.3rem;
 }
 
 #myEventsBtn {
@@ -463,3 +485,81 @@ footer {
 }
 
 
+.leaflet-popup-content-wrapper {
+  padding: 0;               /* eliminamos padding default */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+}
+
+.popup-event {
+  position: relative;
+  width: 220px;
+  height: 120px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.popup-event-title {
+  background: rgba(0,0,0,0.5);
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.popup-event-btn {
+  background: rgba(255,255,255,0.8);
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  margin: 4px 8px 8px;
+  padding: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  /* texturas o gradientes */
+  transform: scale(1.05);
+}
+
+#neighborhoodFilter {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  outline: none;
+
+  /* Scroll */
+  max-height: 150px;  /* altura máxima del desplegable */
+  overflow-y: auto;   /* permite scroll vertical */
+}
+
+/* Para navegadores Webkit (Chrome, Edge, Safari) */
+#neighborhoodFilter::-webkit-scrollbar {
+  width: 8px;
+}
+
+#neighborhoodFilter::-webkit-scrollbar-thumb {
+  background-color: #4f46e5;
+  border-radius: 4px;
+}
+.custom-select .options {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  position: absolute;
+  width: 100%;
+  z-index: 50;
+}
